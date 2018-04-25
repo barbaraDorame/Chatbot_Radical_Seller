@@ -1,0 +1,20 @@
+[
+    {
+        "respuesta" : "Hola como estas, me llamo botor",
+        "etiqueta" : 1,
+        "enojo" : 0,
+        "feliz" : 10
+    },
+    {
+        "respuesta" : "",
+        "etiqueta" : 1,
+        "enojo" : 0,
+        "feliz" : 0
+    },
+    {
+        "respuesta" : "",
+        "etiqueta" : 1,
+        "enojo" : 0,
+        "feliz" : 0
+    }
+]
