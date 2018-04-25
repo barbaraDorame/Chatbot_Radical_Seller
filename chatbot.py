@@ -1,5 +1,7 @@
 import spacy
-nlp = spacy.load("es_core_news_md")
+from Datos_sentimientos.Analisis_sentimental import procesar_sentimientos
+
+nlp = spacy.load("es_core_news_sm")
 
 class ChatBot:
     def __init__(self, texto):
@@ -8,7 +10,8 @@ class ChatBot:
 
     def limpieza(self, texto):
         texto = texto.lower()
-        nlp(texto)
+        texto2 = nlp(texto)
+        return texto2
 
 
     def responder(self, texto):
@@ -16,5 +19,9 @@ class ChatBot:
     def clasificar(self, texto):
 
     def analisis_sentimientos(self, texto):
+        procesar_sentimientos(texto)
 
-    def procesar(self):
+
+    def procesar(self, texto):
+        lex = self.limpieza(texto)
+        self.analisis_sentimientos(lex)
