@@ -9,7 +9,6 @@ class ChatBot:
     def limpieza(self, texto):
         texto = texto.lower()
         nlp(texto)
-        
 
 
     def responder(self, texto):
@@ -18,4 +17,4 @@ class ChatBot:
 
     def analisis_sentimientos(self, texto):
 
-    def procesar():
+    def procesar(self):
