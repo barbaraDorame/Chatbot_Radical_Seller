@@ -9,6 +9,7 @@
     * Spacy
     * Sk-learn
     * Flask
+    * Gensim
 
 ### Frontend
 * React
