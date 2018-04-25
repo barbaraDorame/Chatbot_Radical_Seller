@@ -1,27 +1,54 @@
 import spacy
 from Datos_sentimientos.Analisis_sentimental import procesar_sentimientos
 
+# Carga el modelo de Spacy para palabras en español
 nlp = spacy.load("es_core_news_sm")
 
 class ChatBot:
+    '''
+    Clase para un chatbot generico
+    '''
     def __init__(self, texto):
-        self.text = texto
-
+        '''
+        texto es una lista, cuyos elementos son:
+            Respuesta: String
+            Etiqueta: String (Saludos, Despedida, Vender, Terminar)
+            Enojo: int
+            Feliz: int
+        '''
+        self.conversacion = texto
+        # Numero de respuestas positivas dadas por el usuario
+        self.positivo = 0
+        # Numero de respuestas negativas dadas por el usuario
+        self.negativo = 0
+        # Numero maximo de respuestas negativas que el bot aguanta
+        self.fatiga = 1
 
     def limpieza(self, texto):
+        '''
+        Limpieza de la respuesta dada por el usuario
+        '''
         texto = texto.lower()
         texto2 = nlp(texto)
         return texto2
 
-
     def responder(self, texto):
-
-    def clasificar(self, texto):
-
-    def analisis_sentimientos(self, texto):
-        procesar_sentimientos(texto)
-
-
-    def procesar(self, texto):
+        '''
+        Regresa la respuesta del bot
+        '''
         lex = self.limpieza(texto)
         self.analisis_sentimientos(lex)
+
+    def clasificar(self, texto):
+        '''
+        Trata de inferir la intención de un mensaje
+        '''
+        pass
+
+    def analisis_sentimientos(self, texto):
+        '''
+        Manda a llamar a la función que hace el análisis sentimental
+        de una respuesta dada por el usuario contra una lista de palabras
+        positivas y negativas
+        '''
+        procesar_sentimientos(texto)
