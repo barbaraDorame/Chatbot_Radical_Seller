@@ -1,14 +1,11 @@
 from gensim import corpora, models, similarities
 from gensim.corpora import Dictionary
-import spacy
 
 with open('Negativas.txt', 'r') as f:
     negativas = f.read()
 
 with open('Positivas.txt', 'r') as fi:
     positivas = fi.read()
-
-nlp = spacy.load("es_core_news_sm")
 
 def procesar_sentimientos(texto):
     texto = [texto, [""]]
