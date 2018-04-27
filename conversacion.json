@@ -1,20 +1,115 @@
 [
     {
         "respuesta" : "Hola como estas, me llamo botor",
-        "etiqueta" : 1,
+        "etiqueta" : "saludo",
         "enojo" : 0,
-        "feliz" : 10
+        "feliz" : 10,
+        "categoria" : "",
+        "producto" : ""
     },
     {
-        "respuesta" : "",
-        "etiqueta" : 1,
+        "respuesta" : "¿Cómo se llama, m'lady?",
+        "etiqueta" : "nombre",
         "enojo" : 0,
-        "feliz" : 0
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
     },
     {
-        "respuesta" : "",
-        "etiqueta" : 1,
+        "respuesta" : "¿Qué pedo cachorro? Aqui le traigo un producto maravilloso.",
+        "etiqueta" : "saludo",
         "enojo" : 0,
-        "feliz" : 0
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Buenas tardes, ¿Con quién tengo el gusto?",
+        "etiqueta" : "saludo",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Hola. Que bonito dia, ¿no? Casi tan bonito como este producto que traigo aqui.",
+        "etiqueta" : "saludo",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Mira, te traigo una peluca anticalvicie, te la pones y parece que tienes pelo, viene en diferentes colores brillantes, esta bien chida",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 3,
+        "categoria" : "belleza",
+        "producto" : "peluca"
+    },
+    {
+        "respuesta" : "Te traigo unos lentes 3D 4k para dormir, pa' que veas tus sueños en HD y tercera dimensión",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "lentes"
+    },
+    {
+        "respuesta" : "Tengo un producto de maravilla tecnologica aquí, un abanico que funciona con energía eolica",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "abanico"
+    },
+    {
+        "respuesta" : "Mira, para las lonjitas, para las gorduras, para las estrias, te tengo aquí unas lechugas sabor sabritas, así es, para que estes a dieta sin dejar de disfrutar.",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "comida"
+    },
+    {
+        "respuesta" : "¿Tienes sed pero estas hart@ de llevar tu botella de agua a todos lados? aquí te tengo agua en polvo, solo agrega agua y al instante tendrás una refrescante bebida",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "bebida"
+    },
+    {
+        "respuesta" : "¿Estás hart@ de levantarte a apagar la luz después de acostarte? Aquí te traigo una lampara que se apaga cuando le gritas !APAGATE¡",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "lampara"
+    },
+    {
+        "respuesta" : "¿Estás cansad@ de tener que hidratarte todos los días? yo también, por eso todos los días me tomo mis pastillas de agua y me siento hidratado al instante",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "pastilla"
+    },
+    {
+        "respuesta" : "Pareces una persona que disfruta de la naturaleza, me gusta eso, por eso te traigo hoy unos huaraches sin suelas, para que te sientas uno con el ambiente y la madre tierra",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "zapatos"
+    },
+    {
+        "respuesta" : "¿Sabes qué? Estoy harto de que mi familia entre a mi cuarto cuando estoy ocupado y no toquen la puerta, por eso tengo en mi cuarto esta puerta sin perilla, desde que la puse en mi cuarto ya nadie puede entrar, funciona perfectamente",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : "puerta"
     }
+
 ]
