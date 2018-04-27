@@ -10,7 +10,7 @@ class ChatBot:
     '''
     def __init__(self, texto):
         '''
-        texto es una lista, cuyos elementos son:
+        texto es una lista de diccionario, cuyos elementos son:
             Respuesta: String
             Etiqueta: String (Saludos, Despedida, Vender, Terminar)
             Enojo: int
@@ -23,6 +23,7 @@ class ChatBot:
         self.negativo = 0
         # Numero maximo de respuestas negativas que el bot aguanta
         self.fatiga = 1
+        self.usuario_positividad = 0
 
     def limpieza(self, texto):
         '''
@@ -38,6 +39,7 @@ class ChatBot:
         '''
         lex = self.limpieza(texto)
         self.analisis_sentimientos(lex)
+        return respuesta
 
     def clasificar(self, texto):
         '''
@@ -51,4 +53,4 @@ class ChatBot:
         de una respuesta dada por el usuario contra una lista de palabras
         positivas y negativas
         '''
-        procesar_sentimientos(texto)
+        self.usuario_positividad += procesar_sentimientos(texto)
