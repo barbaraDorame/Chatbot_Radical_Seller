@@ -25,4 +25,4 @@ def procesar_sentimientos(texto):
     if valorpos >= valorneg:
         return valorpos
     else:
-        return valorneg
+        return -valornegvalorneg
