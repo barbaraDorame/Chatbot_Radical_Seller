@@ -7,7 +7,6 @@
 ### Backend
 * Python
     * Spacy
-    * Sk-learn
     * Flask
     * Gensim
 
