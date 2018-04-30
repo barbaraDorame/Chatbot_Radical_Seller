@@ -1,8 +1,9 @@
 import spacy
-from Datos_sentimientos.Analisis_sentimental import procesar_sentimientos
+from analisis_sentimental import procesar_sentimientos
 
 # Carga el modelo de Spacy para palabras en español
 nlp = spacy.load("es_core_news_sm")
+
 
 class ChatBot:
     '''
@@ -37,8 +38,9 @@ class ChatBot:
         '''
         Regresa la respuesta del bot
         '''
-        lex = self.limpieza(texto)
-        self.analisis_sentimientos(lex)
+        # lex = self.limpieza(texto)
+        # self.analisis_sentimientos(lex)
+        respuesta = ""
         return respuesta
 
     def clasificar(self, texto):

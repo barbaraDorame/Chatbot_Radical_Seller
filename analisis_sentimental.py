@@ -1,11 +1,12 @@
 from gensim import corpora, models, similarities
 from gensim.corpora import Dictionary
 
-with open('Negativas.txt', 'r') as f:
+with open('Datos_sentimientos/Negativas.txt', 'r') as f:
     negativas = f.read()
 
-with open('Positivas.txt', 'r') as fi:
+with open('Datos_sentimientos/Positivas.txt', 'r') as fi:
     positivas = fi.read()
+
 
 def procesar_sentimientos(texto):
     texto = [texto, [""]]
@@ -25,4 +26,4 @@ def procesar_sentimientos(texto):
     if valorpos >= valorneg:
         return valorpos
     else:
-        return -valornegvalorneg
+        return -valorneg
