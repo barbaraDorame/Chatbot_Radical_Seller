@@ -2,6 +2,7 @@
   "name": "bort",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "moment": "^2.22.1",
     "prop-types": "^15.6.1",
