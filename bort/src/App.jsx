@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Mensaje from './components/Message';
+import Chat from './components/Chat';
 import './App.css';
 
 let counter = 0;
@@ -48,27 +48,21 @@ class App extends Component {
   }
 
   render() {
+    const {
+      handleCambiarMensaje,
+      handleAddMessage,
+      state: {
+        mensajes,
+        mensajeActual,
+      } 
+    }= this;
     return (
-      <div id="wrapper">
-        <div id="menu">
-          <p className="welcome">Hola, me llamo Bort</p>
-          <p className="logout"><a id="exit" href="https://google.com">Salir del chat</a></p>
-        </div>
-
-        <div id="chatbox">
-          { this.state.mensajes.map((msg, i) => <Mensaje key={i} {...msg} />) }
-        </div>
-
-        <form name="message" onSubmit={this.handleAddMessage}>
-          <input
-            type="text"
-            value={this.state.mensajeActual}
-            onChange={this.handleCambiarMensaje}
-            size="63"
-          />
-          <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-        </form>
-      </div>
+      <Chat
+        mensajes={mensajes}
+        onEnviar={handleAddMessage}
+        onCambiarMsj={handleCambiarMensaje}
+        msjActual={mensajeActual}
+      />
     );
   }
 }
