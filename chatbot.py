@@ -41,17 +41,14 @@ class ChatBot:
         '''
         Regresa la respuesta del bot
         '''
-<<<<<<< HEAD
         lex = self.limpieza(texto)
         self.analisis_sentimientos(lex)
         for ent in doc.ents:
             categorias.append((ent.text, ent.label))
 
-=======
         # lex = self.limpieza(texto)
         # self.analisis_sentimientos(lex)
         respuesta = ""
->>>>>>> 17e48bf7adb0bc1038c98a7512facea7926634c4
         return respuesta
 
 
