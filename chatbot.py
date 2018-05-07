@@ -12,7 +12,8 @@ class ChatBot:
         '''
         texto es una lista de diccionario, cuyos elementos son:
             Respuesta: String
-            Etiqueta: String (Saludos, Despedida, Vender, Terminar)
+            Etiqueta: String
+            (Saludos, Despedida, Vender, Terminar)
             Enojo: int
             Feliz: int
         '''
@@ -22,8 +23,9 @@ class ChatBot:
         # Numero de respuestas negativas dadas por el usuario
         self.negativo = 0
         # Numero maximo de respuestas negativas que el bot aguanta
-        self.fatiga = 1
+        self.fatiga = -1
         self.usuario_positividad = 0
+
 
     def limpieza(self, texto):
         '''
@@ -33,19 +35,26 @@ class ChatBot:
         texto2 = nlp(texto)
         return texto2
 
+
     def responder(self, texto):
         '''
         Regresa la respuesta del bot
         '''
         lex = self.limpieza(texto)
         self.analisis_sentimientos(lex)
+        for ent in doc.ents:
+            categorias.append((ent.text, ent.label))
+
         return respuesta
 
-    def clasificar(self, texto):
+
+
+    def obtener_intencion(self, texto):
         '''
         Trata de inferir la intención de un mensaje
         '''
         pass
+
 
     def analisis_sentimientos(self, texto):
         '''

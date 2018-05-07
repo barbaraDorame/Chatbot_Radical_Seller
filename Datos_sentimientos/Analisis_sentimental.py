@@ -23,6 +23,6 @@ def procesar_sentimientos(texto):
     valorneg = (list(enumerate(porcentaje_negativo))[0][1])
 
     if valorpos >= valorneg:
-        return valorpos
+        return valorpos - valorneg
     else:
-        return -valornegvalorneg
+        return -(valorneg - valorpos)

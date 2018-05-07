@@ -1,9 +1,10 @@
 import pandas as pd
 
-pd.read_csv("meanAbdStdev.csv", ";")
+doc = pd.read_csv("meanAndStdev.csv", ",")
 
 fileneg = open('Negativas.txt', 'w')
 filepos = open('Positivas.txt', 'w')
+
 for i, palabra in doc[["Palabra", "Agrado"]].iterrows():
     plbr = palabra["Palabra"]
     plbr = plbr.replace('_R', '')
@@ -18,9 +19,9 @@ for i, palabra in doc[["Palabra", "Agrado"]].iterrows():
     plbr = plbr.replace('ú', 'u')
     plbr = plbr.replace('ü', 'u')
 
-    if palabra["Agrado"] <= 2:
+    if palabra["Agrado"] < 2:
         fileneg.write(plbr + '\n')
-    else:
+    elif palabra["Agrado"] > 2:
         filepos.write(plbr + '\n')
 
 fileneg.close()
