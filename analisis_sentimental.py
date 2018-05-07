@@ -26,8 +26,4 @@ def procesar_sentimientos(texto):
     if valorpos >= valorneg:
         return valorpos - valorneg
     else:
-<<<<<<< HEAD:Datos_sentimientos/Analisis_sentimental.py
         return -(valorneg - valorpos)
-=======
-        return -valorneg
->>>>>>> 17e48bf7adb0bc1038c98a7512facea7926634c4:analisis_sentimental.py
