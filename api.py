@@ -15,6 +15,11 @@ ma = Marshmallow(app)
 app.secret_key = 'HiPoPotamo'
 
 
+class DummyBot:
+    def responder(self, text):
+        return text[::-1]
+
+
 class Conversacion(db.Model):
     __tablename__ = 'conversacion'
     id = db.Column(db.Integer, primary_key=True)
@@ -46,13 +51,14 @@ class ConversacionSchema(ma.ModelSchema):
 
 
 mensaje_schema = MensajeSchema()
+mensajes_schema = MensajeSchema(many=True)
 conversacion_schema = ConversacionSchema()
 
 
 def construir_chatbot(conversation):
     """Construye un chatbot correspondiente a la conversacion"""
 
-    return ChatBot("")
+    return DummyBot()
 
 
 @app.route('/')
@@ -113,4 +119,4 @@ def conversar(id_conversacion):
 
     db.session.commit()
 
-    return mensaje_schema.jsonify(mensaje_bot)
+    return mensajes_schema.jsonify([mensaje_humano, mensaje_bot])
