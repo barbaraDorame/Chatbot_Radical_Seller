@@ -1,0 +1,90 @@
+[
+  {
+    "mensaje": "Hola",
+    "intencion": "saludar"
+  },
+  {
+    "mensaje": "¿Qué estas vendiendo?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿No tienes algo mas?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "Estoy interesado en comprar algo",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿Qué vendes?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿Qué ofreces?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿Me interesa que estas vendiendo?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿Qué tienes en inventario?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿Qué tienes para mi?",
+    "intencion": "pedir_producto"
+  },
+  {
+    "mensaje": "¿En que colores lo tienes?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Y viene en varios colores?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Tienes mas colores en existencia?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿No hay mas variedades de color?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿No lo tienes en otro color?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Qué colores?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "Me gustaria en otro color",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Lo tienes en azúl?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Lo tienes en verde?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Lo tienes en rojo?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿Lo tienes en negro?",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "Lo preferiria en rojo",
+    "intencion": "preguntar_color"
+  },
+  {
+    "mensaje": "¿En que colores lo está?",
+    "intencion": "preguntar_color"
+  }
+]
