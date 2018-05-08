@@ -19,7 +19,7 @@ def build_feature_matrix(nlp, examples):
     return np.asarray(example_docs)
 
 
-class IntentClassifier:
+class ClasificadorIntencion:
     def __init__(self, nlp_model, classifier=None, intent_idx=None):
         self.nlp_model = nlp_model
         self.nlp = spacy.load(nlp_model)
@@ -34,13 +34,13 @@ class IntentClassifier:
         self.intent_idx = intent_idx
         self.classifier = classifier
 
-    def fit(self, examples):
+    def entrenar(self, examples):
         intents, self.intent_idx = build_intent_vector(examples)
         feat_mat = build_feature_matrix(self.nlp, examples)
 
         return self.classifier.fit(feat_mat, intents)
 
-    def predict(self, text):
+    def predecir(self, text):
         feats = np.array(self.nlp(text).vector).reshape(1, -1)
 
         pred = self.intent_idx[self.classifier.predict(feats)[0]]
@@ -48,7 +48,7 @@ class IntentClassifier:
                  in enumerate(self.classifier.predict_proba(feats)[0])]
         return pred, proba
 
-    def persist(self, filepath):
+    def persistir(self, filepath):
         model_info = {'nlp_model': self.nlp_model,
                       'classifier': self.classifier,
                       'intent_idx': self.intent_idx}
@@ -56,7 +56,7 @@ class IntentClassifier:
             pickle.dump(model_info, fp)
 
     @classmethod
-    def load(cls, filepath):
+    def cargar(cls, filepath):
         with open(filepath, 'rb') as fp:
             model_info = pickle.load(fp)
         nlp = model_info['nlp_model']
