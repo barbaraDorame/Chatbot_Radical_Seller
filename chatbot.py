@@ -1,5 +1,6 @@
 import spacy
 from analisis_sentimental import procesar_sentimientos
+from clasificador_intencion import ClasificadorIntencion
 
 # Carga el modelo de Spacy para palabras en español
 nlp = spacy.load("es_core_news_sm")
@@ -9,7 +10,7 @@ class ChatBot:
     '''
     Clase para un chatbot generico
     '''
-    def __init__(self, texto):
+    def __init__(self, nom_clas):
         '''
         texto es una lista de diccionario, cuyos elementos son:
             Respuesta: String
@@ -18,6 +19,8 @@ class ChatBot:
             Enojo: int
             Feliz: int
         '''
+
+        self.clasificador_intencion = ClasificadorIntencion.cargar(nom_clas)
         self.conversacion = texto
         # Numero de respuestas positivas dadas por el usuario
         self.positivo = 0
@@ -41,6 +44,7 @@ class ChatBot:
         '''
         lex = self.limpieza(texto)
         sent = self.analisis_sentimientos(lex)
+        intencion, _ = self.clasificador_intencion.predecir(texto)
 
         # lex = self.limpieza(texto)
         # self.analisis_sentimientos(lex)
