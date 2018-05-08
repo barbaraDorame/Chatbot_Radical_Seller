@@ -37,6 +37,9 @@ class Mensaje(db.Model):
     id_conversacion = db.Column(db.Integer, db.ForeignKey('conversacion.id'),
                                 nullable=True)
     humano = db.Column(db.Boolean, nullable=False, default=False)
+    intencion_inferida = db.Column(db.String(255))
+    intencion_real = db.Column(db.String(255))
+    etiquetado = db.Column(db.Boolean, nullable=False, default=False)
     texto = db.Column(db.String(1000), nullable=False, default="")
 
 
