@@ -21,7 +21,6 @@ class ChatBot:
         '''
 
         self.clasificador_intencion = ClasificadorIntencion.cargar(nom_clas)
-        self.conversacion = texto
         # Numero de respuestas positivas dadas por el usuario
         self.positivo = 0
         # Numero de respuestas negativas dadas por el usuario
@@ -42,9 +41,9 @@ class ChatBot:
         '''
         Regresa la respuesta del bot
         '''
-        lex = self.limpieza(texto)
-        sent = self.analisis_sentimientos(lex)
-        intencion, _ = self.clasificador_intencion.predecir(texto)
+        doc = self.limpieza(texto)
+        sent = self.analisis_sentimientos(doc)
+        intencion, _ = self.clasificador_intencion.predecir(doc)
 
         # lex = self.limpieza(texto)
         # self.analisis_sentimientos(lex)
