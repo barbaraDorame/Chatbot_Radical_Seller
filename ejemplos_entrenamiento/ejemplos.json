@@ -4,6 +4,22 @@
     "intencion": "saludar"
   },
   {
+    "mensaje": "Hola, como estas?",
+    "intencion": "saludar"
+  },
+  {
+    "mensaje": "Qué tal?",
+    "intencion": "saludar"
+  },
+  {
+    "mensaje": "¿Como estás?",
+    "intencion": "saludar"
+  },
+  {
+    "mensaje": "Buenos dias",
+    "intencion": "saludar"
+  },
+  {
     "mensaje": "¿Qué estas vendiendo?",
     "intencion": "pedir_producto"
   },
