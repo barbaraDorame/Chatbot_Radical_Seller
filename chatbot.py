@@ -32,7 +32,6 @@ class ChatBot:
         '''
         Limpieza de la respuesta dada por el usuario
         '''
-        texto = texto.lower()
         texto2 = nlp(texto)
         return texto2
 
@@ -43,11 +42,6 @@ class ChatBot:
         '''
         lex = self.limpieza(texto)
         self.analisis_sentimientos(lex)
-        for ent in doc.ents:
-            categorias.append((ent.text, ent.label))
-
-        # lex = self.limpieza(texto)
-        # self.analisis_sentimientos(lex)
         respuesta = ""
         return respuesta
 
