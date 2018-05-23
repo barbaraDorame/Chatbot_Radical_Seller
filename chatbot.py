@@ -33,7 +33,6 @@ class ChatBot:
         '''
         Limpieza de la respuesta dada por el usuario
         '''
-        texto = texto.lower()
         texto2 = nlp(texto)
         return texto2
 
@@ -41,12 +40,9 @@ class ChatBot:
         '''
         Regresa la respuesta del bot
         '''
-        doc = self.limpieza(texto)
-        sent = self.analisis_sentimientos(doc)
+        lex = self.limpieza(texto)
+        sent = self.analisis_sentimientos(lex)
         intencion, _ = self.clasificador_intencion.predecir(doc)
-
-        # lex = self.limpieza(texto)
-        # self.analisis_sentimientos(lex)
         respuesta = ""
         return respuesta
 

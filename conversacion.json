@@ -144,7 +144,15 @@
         "producto" : ""
     },
     {
-        "respuesta" : "",
+        "respuesta" : "Bueno, gracias por tu compra.",
+        "etiqueta" : "Despedida",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Diviertete con tu juguete, byeeeee",
         "etiqueta" : "",
         "enojo" : 0,
         "feliz" : 0,
