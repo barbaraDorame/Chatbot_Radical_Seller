@@ -1,8 +1,8 @@
 """ Este modulo incluye el api web para interactuar con el chatbot """
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from chatbot import ChatBot
+from forms import ChatForm
 import datetime
 
 app = Flask(__name__)
@@ -13,6 +13,14 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 app.secret_key = 'HiPoPotamo'
+
+
+class DummyBot:
+    def mensaje_inicial(self):
+        return "suh dude"
+
+    def responder(self, text):
+        return text[::-1]
 
 
 class Conversacion(db.Model):
@@ -27,7 +35,7 @@ class Mensaje(db.Model):
     hora_creacion = db.Column(db.DateTime, nullable=False,
                               default=datetime.datetime.utcnow)
     id_conversacion = db.Column(db.Integer, db.ForeignKey('conversacion.id'),
-                                nullable=False)
+                                nullable=True)
     humano = db.Column(db.Boolean, nullable=False, default=False)
     texto = db.Column(db.String(1000), nullable=False, default="")
 
@@ -46,18 +54,59 @@ class ConversacionSchema(ma.ModelSchema):
 
 
 mensaje_schema = MensajeSchema()
+mensajes_schema = MensajeSchema(many=True)
 conversacion_schema = ConversacionSchema()
 
 
 def construir_chatbot(conversation):
     """Construye un chatbot correspondiente a la conversacion"""
 
-    return ChatBot("")
+    return DummyBot()
 
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def index():
-    return "hi"
+    form = ChatForm()
+    print(form.texto.data)
+    print(form.id_conversacion.data)
+    if form.validate_on_submit():
+        id_conversacion = int(form.id_conversacion.data)
+        texto_humano = form.texto.data
+        print('Agregando mensaje')
+        conversacion = Conversacion.query.get(id_conversacion)
+
+        print(conversacion)
+        mensaje_humano = Mensaje(humano=True, texto=texto_humano)
+        conversacion.mensajes.append(mensaje_humano)
+
+        db.session.add(mensaje_humano)
+
+        chatbot = construir_chatbot(conversacion)
+
+        texto_bot = chatbot.responder(texto_humano)
+        mensaje_bot = Mensaje(humano=False, texto=texto_bot)
+        conversacion.mensajes.append(mensaje_bot)
+
+        db.session.add(mensaje_bot)
+
+    else:
+        print('Creando conversación')
+        conversacion = Conversacion()
+        db.session.add(conversacion)
+
+        bot = construir_chatbot(conversacion)
+        texto = bot.mensaje_inicial()
+        mensaje = Mensaje(humano=False, texto=texto)
+        conversacion.mensajes.append(mensaje)
+        db.session.add(mensaje)
+
+    db.session.commit()
+
+    form.id_conversacion.data = conversacion.id
+    form.texto.data = ""
+
+    return render_template('index.jinja', conversacion=conversacion,
+                           form=form)
 
 
 @app.route('/api/conversacion', methods=['POST'])
@@ -113,4 +162,4 @@ def conversar(id_conversacion):
 
     db.session.commit()
 
-    return mensaje_schema.jsonify(mensaje_bot)
+    return mensajes_schema.jsonify([mensaje_humano, mensaje_bot])

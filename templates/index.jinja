@@ -1,0 +1,32 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+  <div>
+    {% if conversacion is not none %}
+      <div>
+        {% for mensaje in conversacion.mensajes %}
+          <div class="media">
+            <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-0">{{ "Tu" if mensaje.humano else "Bort" }}:</h5>
+              {{ mensaje.texto }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <form method="post" class="pure-form">
+        {{ form.csrf_token }}
+        {{ form.id_conversacion }}
+        <div class="form-row">
+         <div class="col">
+           {{ form.texto(class_="form-control") }}
+         </div>
+         <div class="col">
+           {{ form.enviar(class_="btn btn-primary") }}
+
+         </div>
+       </div>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

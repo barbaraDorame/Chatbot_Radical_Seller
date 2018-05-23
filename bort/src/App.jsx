@@ -23,6 +23,7 @@ class App extends Component {
     this.state = {
       loaded: true,
       conversationId: null,
+      sending: false,
       mensajes: [],
       mensajeActual: '',
     };
@@ -44,6 +45,7 @@ class App extends Component {
   handleAddMessage(event) {
     event.preventDefault();
     const texto = this.state.mensajeActual;
+    this.setState(prevState => ({ ...prevState, sending: true }));
     fetch(`/api/conversacion/${this.state.conversationId}/mensajes`, {
       headers: {
         Accept: 'application/json',
@@ -52,12 +54,13 @@ class App extends Component {
       method: 'post',
       body: JSON.stringify({ texto }),
     }).then(res => res.json())
-      .then((msg) => {
+      .then((msgs) => {
         this.setState(prevState => ({
           ...prevState,
+          mensajeActual: '',
           mensajes: [
             ...prevState.mensajes,
-            convertirMensaje(msg),
+            ...msgs.map(convertirMensaje),
           ],
         }));
       });
@@ -80,6 +83,7 @@ class App extends Component {
         mensajes,
         mensajeActual,
         loaded,
+        sending,
       },
     } = this;
 
@@ -93,6 +97,7 @@ class App extends Component {
         onEnviar={handleAddMessage}
         onCambiarMsj={handleCambiarMensaje}
         msjActual={mensajeActual}
+        disable={sending}
       />
     );
   }

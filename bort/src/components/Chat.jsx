@@ -7,6 +7,7 @@ const Chat = ({
   onEnviar,
   onCambiarMsj,
   msjActual,
+  disabled,
 }) => (
   <div id="wrapper">
     <div id="menu">
@@ -23,8 +24,15 @@ const Chat = ({
         value={msjActual}
         onChange={onCambiarMsj}
         size="63"
+        disabled={disabled}
       />
-      <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+      <input
+        name="submitmsg"
+        type="submit"
+        id="submitmsg"
+        value="Send"
+        disabled={disabled}
+      />
     </form>
   </div>
 );
@@ -34,6 +42,7 @@ Chat.propTypes = {
   onEnviar: PropTypes.func.isRequired,
   onCambiarMsj: PropTypes.func.isRequired,
   msjActual: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default Chat;
