@@ -7,25 +7,25 @@ Chatbot con aprendizaje.
 Se recomienda correr el servidor en un ambiente virtual de python. Usando solo
 virtualenv.
 
-´´´bash
+```bash
 $ virtualenv venv # crea el ambiente virtual
 $ source activate venv
-´´´
+```
 
 Para instalar las dependencias de python
 
-´´´bash
+```bash
 $ pip -r requirements.txt
 $ python -m spacy download es_core_news_sm # Modelo de spacy en español
-´´´
+```
 
 Finalmente, corremos el servidor de prueba.
 
-´´´
+```
 $ export FLASK_APP=app.py
 $ export FLASK_ENV=debug
 $ flask run
-´´´
+```
 
 ## Herramientas:
 
