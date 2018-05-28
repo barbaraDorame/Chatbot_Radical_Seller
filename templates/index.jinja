@@ -1,32 +1,48 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-  <div>
+  <div class="col-md-6 message-container">
     {% if conversacion is not none %}
-      <div>
         {% for mensaje in conversacion.mensajes %}
-          <div class="media">
-            <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
-            <div class="media-body">
-              <h5 class="mt-0">{{ "Tu" if mensaje.humano else "Bort" }}:</h5>
-              {{ mensaje.texto }}
+          {% if mensaje.humano %}
+
+          <div class="row justify-content-end">
+            <div class="mensaje d-flex flex-row-reverse align-self-end">
+              <img class="mr-3 avi float-right" src="{{ url_for('static', filename='tu.png') }}" alt="beep boop">
+              <div class="">
+                <h5 class="align-right">Tu:</h5>
+                {{ mensaje.texto }}
+              </div>
             </div>
           </div>
+          {% else %}
+          <div class="row justify-content-start">
+            <div class="align-left d-flex mensaje">
+              <img class="float-left mr-3" src="{{ url_for('static', filename='bort.png') }}" alt="beep boop">
+              <div class="">
+                <h5 class="mt-0">Bort:</h5>
+                {{ mensaje.texto }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
         {% endfor %}
+        <div class="row">
+        <div class="col-sm-12">
+        <form method="post">
+          {{ form.csrf_token }}
+          {{ form.id_conversacion }}
+          <div class="form-row">
+           <div class="col-auto">
+             {{ form.texto(class_="form-control") }}
+           </div>
+           <div class="col-auto">
+             {{ form.enviar(class_="btn btn-primary") }}
+           </div>
+        </form>
+          </div>
+        </div>
       </div>
-      <form method="post" class="pure-form">
-        {{ form.csrf_token }}
-        {{ form.id_conversacion }}
-        <div class="form-row">
-         <div class="col">
-           {{ form.texto(class_="form-control") }}
-         </div>
-         <div class="col">
-           {{ form.enviar(class_="btn btn-primary") }}
-
-         </div>
-       </div>
-      </form>
     {% endif %}
   </div>
 {% endblock %}
