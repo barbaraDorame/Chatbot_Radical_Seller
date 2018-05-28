@@ -39,5 +39,17 @@ def predecir(model, text):
     click.echo(prob)
 
 
+@bort.command()
+@click.argument('out', nargs=1, type=click.File('w'))
+def exportar(out):
+    from app import Mensaje
+
+    mensajes = [{'mensaje': mensaje.texto, 'intencion': mensaje.intencion_real}
+                for mensaje in Mensaje.query.filter_by(humano=True,
+                                                       etiquetado=True)]
+    click.echo(mensajes)
+    json.dump(mensajes, out)
+
+
 if __name__ == '__main__':
     bort()

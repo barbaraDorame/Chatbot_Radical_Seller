@@ -2,7 +2,7 @@
 from flask import Flask, request, abort, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from forms import ChatForm
+from forms import ChatForm, ClassifyForm
 import datetime
 
 app = Flask(__name__)
@@ -37,6 +37,9 @@ class Mensaje(db.Model):
     id_conversacion = db.Column(db.Integer, db.ForeignKey('conversacion.id'),
                                 nullable=True)
     humano = db.Column(db.Boolean, nullable=False, default=False)
+    intencion_inferida = db.Column(db.String(255))
+    intencion_real = db.Column(db.String(255))
+    etiquetado = db.Column(db.Boolean, nullable=False, default=False)
     texto = db.Column(db.String(1000), nullable=False, default="")
 
 
@@ -88,7 +91,6 @@ def index():
         conversacion.mensajes.append(mensaje_bot)
 
         db.session.add(mensaje_bot)
-
     else:
         print('Creando conversación')
         conversacion = Conversacion()
@@ -107,6 +109,13 @@ def index():
 
     return render_template('index.jinja', conversacion=conversacion,
                            form=form)
+
+
+@app.route('/etiquetar', methods=('GET', 'POST'))
+def clasificar():
+    form = ClassifyForm()
+
+    return render_template('classify.jinja', form=form)
 
 
 @app.route('/api/conversacion', methods=['POST'])
