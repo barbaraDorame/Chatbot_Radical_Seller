@@ -1,19 +1,15 @@
+from app import db, Dialogo
 import json
-from collections import defaultdict
 
-with open('../conversacion.json') as json_file:
-    data = json.load(json_file)
-for respuesta in data:
-    categoria = respuesta["categoria"]
-    lista = defaultdict()
-    if categoria == "saludo":
-        
-    elif categoria == "vender":
 
-    elif categoria == "oferta":
+def limpieza():
+    with open("../conversacion.json") as h:
+        dialogos = json.load(h)
 
-    elif categoria == "despedida":
+    for mono in dialogos:
+        logo = Dialogo(respuesta=mono["respuesta"], etiqueta=mono["etiqueta"],
+                       enojo=mono["enojo"], feliz=mono["feliz"],
+                       categoria=mono["categoria"], producto=mono["producto"])
+        db.session.add(logo)
 
-    else:
-
-    return lista
+    db.session.commit()
