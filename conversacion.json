@@ -121,7 +121,7 @@
     },
     {
         "respuesta" : "Mira, por lo general esto cuesta 4999.99 pero solo por hoy (y por ser tu), te lo dejo en $4998.99 ¿Qué onda?",
-        "etiqueta" : "Oferta",
+        "etiqueta" : "oferta",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -129,7 +129,7 @@
     },
     {
         "respuesta" : "Hoy y solo hoy a los primeros clientes les tenemos un 2x1 y un abrazo de su mismisimo vendedor Bort, considerelo un placer de su parte :)",
-        "etiqueta" : "Oferta",
+        "etiqueta" : "oferta",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -137,7 +137,7 @@
     },
     {
         "respuesta" : "Te voy a dar 3% de descuento nomas porque hace mucho calor y los 2 nos queremos ir a casa, andale chaval, hechame la mano, tengo 3 cachorros",
-        "etiqueta" : "Oferta",
+        "etiqueta" : "oferta",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -145,7 +145,7 @@
     },
     {
         "respuesta" : "Bueno, gracias por tu compra.",
-        "etiqueta" : "Despedida",
+        "etiqueta" : "despedida",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -153,7 +153,39 @@
     },
     {
         "respuesta" : "Diviertete con tu juguete, byeeeee",
-        "etiqueta" : "",
+        "etiqueta" : "despedida",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Arigatou como dicen los chinos ahí nos vemos cabrón.",
+        "etiqueta" : "despedida",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "Hasta la vista.",
+        "etiqueta" : "despedida",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "¿Hola cómo estás? con todo respeto aquí te traigo presentando, mostrando, enseñando ",
+        "etiqueta" : "vender",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
+        "respuesta" : "",
+        "etiqueta" : "despedida",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
