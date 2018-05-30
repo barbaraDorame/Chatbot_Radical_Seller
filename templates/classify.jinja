@@ -2,15 +2,19 @@
 
 {% block content %}
   <div class="pure-u-1-4">
-    <form class="pure-form pure-form-aligned">
+    <form class="pure-form pure-form-aligned" method="post">
       {{ form.csrf_token }}
+      {{ form.id_mensaje }}
       <div class="pure-control-group">
         {{ form.texto.label }}
-        {{ form.texto }}
+        {{ form.texto.data }}
       </div>
       <div class="pure-control-group">
         {{ form.intencion.label }}
         {{ form.intencion }}
+      </div>
+      <div class="pure-control-group">
+        {{ form.enviar(class_="btn btn-primary") }}
       </div>
     </form>
   </div>

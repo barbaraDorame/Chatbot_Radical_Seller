@@ -1,5 +1,5 @@
 """ Este modulo incluye el api web para interactuar con el chatbot """
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, abort, render_template, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from forms import ChatForm, ClassifyForm
@@ -17,10 +17,10 @@ app.secret_key = 'HiPoPotamo'
 
 class DummyBot:
     def mensaje_inicial(self):
-        return "suh dude"
+        return MensajeBort(dialogo_id=3)
 
-    def responder(self, text):
-        return text[::-1]
+    def responder(self, mensaje):
+        return MensajeBort(dialogo_id=1)
 
 
 class Dialogo(db.Model):
@@ -41,12 +41,6 @@ class Conversacion(db.Model):
     topico = db.Column(db.String(50))
 
 
-class MensajeBort(Mensaje):
-    __tablename__ = 'mensaje_bort'
-    id = db.Column(db.Integer, db.ForeignKey('mensaje.id'))
-    dialogo_id = db.Column(db.Integer, db.ForeignKey('dialogo.id'))
-
-
 class Mensaje(db.Model):
     __tablename__ = 'mensaje'
     id = db.Column(db.Integer, primary_key=True)
@@ -54,11 +48,51 @@ class Mensaje(db.Model):
                               default=datetime.datetime.utcnow)
     id_conversacion = db.Column(db.Integer, db.ForeignKey('conversacion.id'),
                                 nullable=True)
-    humano = db.Column(db.Boolean, nullable=False, default=False)
+
+    type = db.Column(db.String(50))
+
+    @property
+    def texto(self):
+        return ''
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'mensaje',
+        'polymorphic_on': type
+    }
+
+
+class MensajeBort(Mensaje):
+    __tablename__ = 'mensaje_bort'
+    id = db.Column(db.Integer, db.ForeignKey('mensaje.id'),
+                   primary_key=True)
+    dialogo_id = db.Column(db.Integer, db.ForeignKey('dialogo.id'))
+    dialogo = db.relationship("Dialogo", backref='mensajes')
+
+    @property
+    def texto(self):
+        return self.dialogo.respuesta
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'mensaje_bort'
+    }
+
+
+class MensajeHumano(Mensaje):
+    __tablename__ = 'mensaje_humano'
+    id = db.Column(db.Integer, db.ForeignKey('mensaje.id'),
+                   primary_key=True)
+    texto_mensaje = db.Column(db.String(255))
     intencion_inferida = db.Column(db.String(255))
     intencion_real = db.Column(db.String(255))
     etiquetado = db.Column(db.Boolean, nullable=False, default=False)
-    texto = db.Column(db.String(1000), nullable=False, default="")
+
+    @property
+    def texto(self):
+        return self.texto_mensaje
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'mensaje_humano'
+    }
 
 
 class MensajeSchema(ma.ModelSchema):
@@ -88,35 +122,28 @@ def construir_chatbot(conversation):
 @app.route('/', methods=('GET', 'POST'))
 def index():
     form = ChatForm()
-    print(form.texto.data)
-    print(form.id_conversacion.data)
     if form.validate_on_submit():
         id_conversacion = int(form.id_conversacion.data)
         texto_humano = form.texto.data
-        print('Agregando mensaje')
         conversacion = Conversacion.query.get(id_conversacion)
 
-        print(conversacion)
-        mensaje_humano = Mensaje(humano=True, texto=texto_humano)
+        mensaje_humano = MensajeHumano(texto_mensaje=texto_humano)
         conversacion.mensajes.append(mensaje_humano)
 
         db.session.add(mensaje_humano)
 
         chatbot = construir_chatbot(conversacion)
 
-        texto_bot = chatbot.responder(texto_humano)
-        mensaje_bot = Mensaje(humano=False, texto=texto_bot)
+        mensaje_bot = chatbot.responder(texto_humano)
         conversacion.mensajes.append(mensaje_bot)
 
         db.session.add(mensaje_bot)
     else:
-        print('Creando conversación')
         conversacion = Conversacion()
         db.session.add(conversacion)
 
         bot = construir_chatbot(conversacion)
-        texto = bot.mensaje_inicial()
-        mensaje = Mensaje(humano=False, texto=texto)
+        mensaje = bot.mensaje_inicial()
         conversacion.mensajes.append(mensaje)
         db.session.add(mensaje)
 
@@ -132,6 +159,31 @@ def index():
 @app.route('/etiquetar', methods=('GET', 'POST'))
 def clasificar():
     form = ClassifyForm()
+    intenciones = [('saludo', 'saludo'),
+                   ('ofrecer_producto', 'ofrecer_producto'),
+                   ('despedida', 'despedida')]
+    form.intencion.choices = intenciones
+    if form.validate_on_submit():
+        print('Mensaje etiquetado')
+        mensaje = MensajeHumano.query.get(form.id_mensaje.data)
+        if not mensaje or mensaje.etiquetado:
+            return abort(401)
+        flash('Mensaje etiquetado con exito')
+        mensaje.intencion_real = form.intencion.data
+
+        mensaje.etiquetado = True
+
+        db.session.commit()
+
+    mensaje = MensajeHumano.query.filter(MensajeHumano.etiquetado.is_(False)) \
+        .first()
+
+    if not mensaje:
+        return render_template('nada.jinja')
+
+    form.id_mensaje.data = mensaje.id
+    form.texto.data = mensaje.texto
+    form.intencion.data = mensaje.intencion_inferida
 
     return render_template('classify.jinja', form=form)
 

@@ -4,7 +4,7 @@
   <div class="col-md-6 message-container">
     {% if conversacion is not none %}
         {% for mensaje in conversacion.mensajes %}
-          {% if mensaje.humano %}
+          {% if mensaje.type == 'mensaje_humano' %}
 
           <div class="row justify-content-end">
             <div class="mensaje d-flex flex-row-reverse align-self-end">
