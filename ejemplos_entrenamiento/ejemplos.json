@@ -1,106 +1,156 @@
 [
   {
     "mensaje": "Hola",
-    "intencion": "saludar"
+    "intencion": "saludar",
+    "humor": 0
+  },
+  {
+    "mensaje": "Sale bye",
+    "intencion": "despedida"
+  },
+  {
+    "mensaje": "Me parece bien",
+    "intencion": "estar_de_acuerdo"
+  },
+  {
+    "mensaje": "No lo creo, viejo",
+    "intencion": "no_estar_de_acuerdo"
+  },
+  {
+    "mensaje": "¿En que tallas lo tienes?",
+    "intencion": "preguntar_tamano"
+  },
+  {
+    "mensaje": "¿A cuanto lo das?",
+    "intencion": "preguntar_precio"
+  },
+  {
+    "mensaje": "¿No me lo podras dar mas barato?",
+    "intencion": "regatear"
   },
   {
     "mensaje": "Hola, como estas?",
-    "intencion": "saludar"
+    "intencion": "saludar",
+    "humor": 0.3
   },
   {
     "mensaje": "¿Qué tal?",
-    "intencion": "saludar"
+    "intencion": "saludar",
+    "humor": 0.2
   },
   {
     "mensaje": "¿Como estás?",
-    "intencion": "saludar"
+    "intencion": "saludar",
+    "humor": 0.1
   },
   {
     "mensaje": "Buenos dias",
-    "intencion": "saludar"
+    "intencion": "saludar",
+    "humor": 0
   },
   {
     "mensaje": "¿Qué estas vendiendo?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0
   },
   {
     "mensaje": "¿No tienes algo mas?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": -0.1
   },
   {
     "mensaje": "Estoy interesado en comprar algo",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0.2
   },
   {
     "mensaje": "¿Qué vendes?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0.1
   },
   {
     "mensaje": "¿Qué ofreces?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0
   },
   {
-    "mensaje": "¿Me interesa que estas vendiendo?",
-    "intencion": "pedir_producto"
+    "mensaje": "¿Me interesa, que estas vendiendo?",
+    "intencion": "pedir_producto",
+    "humor": 0.1
   },
   {
     "mensaje": "¿Qué tienes en inventario?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0
   },
   {
     "mensaje": "¿Qué tienes para mi?",
-    "intencion": "pedir_producto"
+    "intencion": "pedir_producto",
+    "humor": 0.1
   },
   {
     "mensaje": "¿En que colores lo tienes?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Y viene en varios colores?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Tienes mas colores en existencia?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿No hay mas variedades de color?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿No lo tienes en otro color?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": -0.1
   },
   {
     "mensaje": "¿Qué colores?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "Me gustaria en otro color",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Lo tienes en azúl?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Lo tienes en verde?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Lo tienes en rojo?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿Lo tienes en negro?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "Lo preferiria en rojo",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   },
   {
     "mensaje": "¿En que colores lo está?",
-    "intencion": "preguntar_color"
+    "intencion": "preguntar_color",
+    "humor": 0
   }
 ]

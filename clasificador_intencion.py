@@ -2,16 +2,15 @@ import numpy as np
 import pickle
 import spacy
 from sklearn.svm import SVC
-from util import leer_configuracion
 
 
-def build_category_vector(examples, var):
-    labels = [example[var] for example in examples]
-    label_idx = {key: value for value, key in enumerate(set(labels))}
-    reverse_idx = {value: key for key, value in label_idx.items()}
-    label_arr = np.array([label_idx[intent] for intent in labels])
+def build_intent_vector(examples):
+    intents = [example['intencion'] for example in examples]
+    intent_idx = {key: value for value, key in enumerate(set(intents))}
+    reverse_idx = {value: key for key, value in intent_idx.items()}
+    intent_arr = np.array([intent_idx[intent] for intent in intents])
 
-    return label_arr, reverse_idx
+    return intent_arr, reverse_idx
 
 
 def build_feature_matrix(nlp, examples):
@@ -20,29 +19,7 @@ def build_feature_matrix(nlp, examples):
     return np.asarray(example_docs)
 
 
-class ModeloMensaje:
-    """ Modelo para inferir todas las variables de un mensaje con todas las
-    variables definidas en un archivo de configuración """
-    def __init__(self, nlp_model, config):
-        self.config = leer_configuracion(config)['variables_mensaje']
-        self.modelos = {nombre: crear_modelo(nombre, info_var)
-                        for nombre, info_var in self.config}
-
-        self.nlp_model = nlp_model
-        self.nlp = spacy.load(nlp_model)
-
-    def entrenar(self, ejemplos):
-        feats = build_feature_matrix(self.nlp, ejemplos)
-        for name, info_var in self.config.items():
-            etiquetas = [ej.get(name, default=info_var['default'])
-                         for ej in ejemplos]
-            self.modelos[name].entrenar(feats, etiquetas)
-
-        if variable['tipo'] == 'clasificador':
-            pass
-
-
-class ModeloClasificador:
+class ClasificadorIntencion:
     def __init__(self, nlp_model, classifier=None, intent_idx=None):
         self.nlp_model = nlp_model
         self.nlp = spacy.load(nlp_model)
@@ -58,7 +35,7 @@ class ModeloClasificador:
         self.classifier = classifier
 
     def entrenar(self, examples):
-        intents, self.intent_idx = build_category_vector(examples)
+        intents, self.intent_idx = build_intent_vector(examples)
         feat_mat = build_feature_matrix(self.nlp, examples)
 
         return self.classifier.fit(feat_mat, intents)
