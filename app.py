@@ -38,7 +38,6 @@ class Conversacion(db.Model):
     __tablename__ = 'conversacion'
     id = db.Column(db.Integer, primary_key=True)
     mensajes = db.relationship('Mensaje', backref='conversacion', lazy=True)
-    topico = db.Column(db.String(50))
 
 
 class Mensaje(db.Model):

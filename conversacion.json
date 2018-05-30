@@ -113,7 +113,7 @@
     },
     {
         "respuesta" : "¿No te gusta? Te doy 2x1",
-        "etiqueta" : "oferta",
+        "etiqueta" : "manipulacion",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -121,7 +121,7 @@
     },
     {
         "respuesta" : "Mira, por lo general esto cuesta 4999.99 pero solo por hoy (y por ser tu), te lo dejo en $4998.99 ¿Qué onda?",
-        "etiqueta" : "oferta",
+        "etiqueta" : "manipulacion",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -129,7 +129,7 @@
     },
     {
         "respuesta" : "Hoy y solo hoy a los primeros clientes les tenemos un 2x1 y un abrazo de su mismisimo vendedor Bort, considerelo un placer de su parte :)",
-        "etiqueta" : "oferta",
+        "etiqueta" : "manipulacion",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",
@@ -137,7 +137,7 @@
     },
     {
         "respuesta" : "Te voy a dar 3% de descuento nomas porque hace mucho calor y los 2 nos queremos ir a casa, andale chaval, hechame la mano, tengo 3 cachorros",
-        "etiqueta" : "oferta",
+        "etiqueta" : "manipulacion",
         "enojo" : 0,
         "feliz" : 0,
         "categoria" : "",

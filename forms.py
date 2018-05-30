@@ -12,6 +12,6 @@ class ChatForm(FlaskForm):
 
 class ClassifyForm(FlaskForm):
     id_mensaje = HiddenField("ID del mensaje", validators=[DataRequired()])
-    texto = StringField('Texto del mensaje', validators=[DataRequired()])
+    texto = HiddenField('Texto del mensaje')
     intencion = SelectField('Intención', validators=[DataRequired()])
     enviar = SubmitField('Enviar')
