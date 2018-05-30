@@ -144,6 +144,30 @@
         "producto" : ""
     },
     {
+        "respuesta" : "En cualquier parte te lo venden a $2000 we, yo te lo dijo a $1500",
+        "etiqueta" : "manipulacion",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+      {
+        "respuesta" : "Ya me andan queriendo comprar el ultimo que me queda, yo que tu me pongo las pilas",
+        "etiqueta" : "manipulacion",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+      {
+        "respuesta" : "Andale we! ocupo la feria para darle de comer a Bort Jr. , es solo una pobre tostadora :(",
+        "etiqueta" : "manipulacion",
+        "enojo" : 0,
+        "feliz" : 0,
+        "categoria" : "",
+        "producto" : ""
+    },
+    {
         "respuesta" : "Bueno, gracias por tu compra.",
         "etiqueta" : "despedida",
         "enojo" : 0,
