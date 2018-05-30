@@ -38,13 +38,13 @@ class Conversacion(db.Model):
     __tablename__ = 'conversacion'
     id = db.Column(db.Integer, primary_key=True)
     mensajes = db.relationship('Mensaje', backref='conversacion', lazy=True)
-    topico = db.Column(db.String(50))
 
 
 class MensajeBort(Mensaje):
     __tablename__ = 'mensaje_bort'
     id = db.Column(db.Integer, db.ForeignKey('mensaje.id'))
     dialogo_id = db.Column(db.Integer, db.ForeignKey('dialogo.id'))
+    dialogo = db.relationship('Dialogo')
 
 
 class Mensaje(db.Model):
